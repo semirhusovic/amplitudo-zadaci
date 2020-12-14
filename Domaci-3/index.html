@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="inputContainer">
+            <input type="text" id='kriterijum' placeholder="Unesite kriterijum pretrage">
+            <select id='tip'>
+                <option value="movie">Filmovi</option>
+                <option value="series">Serije</option>
+            </select>
+            <input type="number" id='godina' placeholder="Unesite godinu">
+            <button class="pretraga"><i class="fa fa-search"></i>Pretraga</button>
+        </div>
+        
+    <div class="output">
+        <div class="poster">
+            <img class="posterImg" src="" alt="slika">
+            <div class="label"></div>
+        </div>
+        <div class="info"><div class="naziv">Naziv : <span class="oNaziv"></span></div>
+        <div>Godina : <span class="oGodina"></span></div>
+        <div>Trajanje : <span class="oTrajanje"></span></div>
+        <div>Datum Objavljivanja : <span class="oDatum"></span></div>
+        <div>Reziser : <span class="oReziser"></span></div>
+        <div>Glumci : <span class="oGlumci"></span></div>
+        <div>Radnja : <span class="oRadnja"></span></div>
+        <div class='brSez'>Broj Sezona : <span class="oBrSez"></span></div>
+        <div>Ocjene Gledalaca : <span class="oRejting"></span></div>
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
