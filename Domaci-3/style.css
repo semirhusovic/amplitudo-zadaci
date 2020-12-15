@@ -1,54 +1,91 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
 body {
   font-family: "Nunito", sans-serif;
-  margin: 5% 20%;
+  margin-top: 5%;
+  background-color: rgb(24, 24, 24);
+  color: white;
 }
 .container {
-  border: 1px solid black;
+  border: 1px solid rgb(231, 230, 230);
+  box-shadow: 0 4px 8px 0 rgba(235, 233, 233, 0.2), 0 6px 20px 0 rgba(238, 231, 231, 0.19);
 }
-.inputContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  padding: 50px;
-}
-
-input,
-select {
+#tip,
+#godina,
+#kriterijum {
   padding: 10;
-  margin-left: 20px;
+  margin: 20px;
+  background-color: #282d33;
+  color: white;
+  width: 16%;
 }
-
-.output {
+#output {
   display: flex;
   flex-direction: row;
   padding: 2%;
+  flex-wrap: wrap;
 }
 .info {
   padding: 20px;
-  flex-direction: column;
-  justify-content: space-between;
   width: 48%;
-  /* background-color: blue; */
 }
 .poster {
   padding: 20px;
   width: 48%;
-  /* background-color: red; */
+  text-align: center;
 }
-.info > div {
-  padding: 10px;
+#forma {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.poster {
-  position: relative;
+#pretraga {
+  margin: 20px;
+  width: 10%;
+}
+.form-centered {
+  margin: 0 auto;
+  width: 80%;
+}
+@media only screen and (max-width: 500px) {
+  .output {
+    flex-direction: column;
+    font-size: 1.5em;
+  }
+  .poster {
+    width: 100%;
+    justify-content: center;
+  }
+  .info {
+    width: 100%;
+  }
+  #pretraga {
+    margin: 20px;
+    width: 100%;
+  }
+  #godina {
+    width: 100%;
+  }
 }
 
-.type {
-  background-color: rgb(236, 72, 72);
-  color: white;
-  font-size: 1.6em;
-  position: absolute;
-  top: 5%;
+@media only screen and (max-width: 768px) {
+  .output {
+    flex-direction: column;
+    font-size: 1.5em;
+  }
+  .poster {
+    justify-content: center;
+    width: 100%;
+  }
+  .info {
+    width: 100%;
+  }
+  #tip {
+    margin: 20px;
+    width: 100%;
+  }
+  #kriterijum,
+  #godina,
+  #pretraga {
+    width: 100%;
+  }
 }

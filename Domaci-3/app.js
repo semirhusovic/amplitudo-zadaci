@@ -1,41 +1,81 @@
 $(document).ready(() => {
     const apiKey = 'fdb9ea3c'
+        $( "form" ).click(function( event ) {
+            event.preventDefault()});
     $('.output').hide();
     $('.pretraga').on('click', () => {
+        $('.info').html(''); // brisanje starih podataka iz tabele
         let naslov = $('#kriterijum')
         let tip = $('#tip')
         let godina = $('#godina')
+        if (naslov.val().length == 0) {
+            alert('Naziv mora biti popunjen')
+        }
         $.ajax({  
             url: `http://www.omdbapi.com/?apikey=${apiKey}&t=${naslov.val()}&type=${tip.val()}&y=${godina.val()}`,  
             dataType: 'text',  
             type: "GET",  
             success: function(data) {  
             let podaciJSON = JSON.parse(data);
-            $('.output').show();
-            $(".oNaziv").html(podaciJSON.Title);
-            $(".oGodina").html(podaciJSON.Year);
-            $(".oDatum").html(podaciJSON.Released);
-            $(".oTrajanje").html(podaciJSON.Runtime);
             $(".posterImg").attr("src",podaciJSON.Poster);
-            $(".oReziser").html(podaciJSON.Director);
-            $(".oGlumci").html(podaciJSON.Actors);
-            $(".oRadnja").html(podaciJSON.Plot);
-            $(".oBrSez").html(podaciJSON.totalSeasons);
-            $(".label").html(podaciJSON.Type);
-
-           if(tip.val() == 'series') {
-            $('.brSez').show();
-           }
-           else {
-            $('.brSez').hide();   
-           }
-        $(".oRadnja").html(podaciJSON.Plot);
+            $(".info").append(`<table class="table table-dark">
+            <tbody id="InfoData">
+            <tr>
+                <td><b>Naziv</b></td>
+                <td colspan="2">${podaciJSON.Title}</td>
+            </tr>
+            <tr>
+                <td><b>Godina</b></td>
+                <td colspan="2">${podaciJSON.Year}</td>
+            </tr>
+            <tr>
+                <td><b>Datum</b></td>
+                <td colspan="2">${podaciJSON.Released}</td>
+            </tr>
+            <tr>
+                <td><b>Trajanje</b></td>
+                <td colspan="2">${podaciJSON.Runtime}</td>
+            </tr>
+            <tr>
+                <td><b>Reziser</b></td>
+                <td colspan="2">${podaciJSON.Director}</td>
+            </tr>
+            <tr>
+                <td><b>Glumci</b></td>
+                <td colspan="2">${podaciJSON.Actors}</td>
+            </tr>
+            <tr>
+                <td><b>Radnja</b></td>
+                <td colspan="2">${podaciJSON.Plot}</td>
+            </tr>
+            <tr>
+                <td><b>Rejting</b></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+            </table>
+            `)
         podaciJSON.Ratings.forEach((el) => {
-            $( ".oRejting" ).append(`<br> ${el.Source} : ${el.Value}`);
+            $( "#InfoData" ).append(`<tr>
+            <td></td>
+            <td>${el.Source}</td>
+            <td>${el.Value}</td>
+            </tr>`
+            );
         })
-            }  
-            });  
-
+        if(tip.val() == 'series') {
+            $( "#InfoData" ).append(`<tr>
+            <td><b>Broj Sezona</b></td>
+            <td>${podaciJSON.totalSeasons}</td>
+            <td></td>
+            </tr>`)
+        }
+    
+            $('.output').show();
+            }, 
+        // place to add error handling
+        }      );  
 
     })
 })
