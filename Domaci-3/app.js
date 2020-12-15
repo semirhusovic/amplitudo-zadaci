@@ -4,7 +4,6 @@ $(document).ready(() => {
             event.preventDefault()});
     $('.output').hide();
     $('.pretraga').on('click', () => {
-        $('.info').html(''); // brisanje starih podataka iz tabele
         let naslov = $('#kriterijum')
         let tip = $('#tip')
         let godina = $('#godina')
@@ -16,7 +15,13 @@ $(document).ready(() => {
             dataType: 'text',  
             type: "GET",  
             success: function(data) {  
+            $('.info').html(''); // brisanje starih podataka iz tabele
+            $('.errors').html(''); // brisanje starih gresaka iz tabele
             let podaciJSON = JSON.parse(data);
+            if(podaciJSON.Error != undefined) {
+                $('.output').hide();
+                $(".errors").html(`${podaciJSON.Error}`)  
+            }
             $(".posterImg").attr("src",podaciJSON.Poster);
             $(".info").append(`<table class="table table-dark">
             <tbody id="InfoData">
@@ -74,8 +79,13 @@ $(document).ready(() => {
     
             $('.output').show();
             }, 
-        // place to add error handling
-        }      );  
+
+            error: function(xhr, status, error){
+                var errorMessage = xhr.status + ': ' + xhr.statusText
+                $(".errors").html(`${errorMessage}`)
+            }
+
+        });  
 
     })
 })

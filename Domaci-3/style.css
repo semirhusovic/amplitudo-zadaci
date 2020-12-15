@@ -89,3 +89,7 @@ body {
     width: 100%;
   }
 }
+.errors {
+  color: rgb(216, 9, 9);
+  font-size: 2em;
+}
