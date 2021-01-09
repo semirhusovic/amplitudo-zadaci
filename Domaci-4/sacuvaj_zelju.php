@@ -12,35 +12,31 @@ $zelje=$_POST["zelje"];
 
 function checkIme ($ime) {
     global $errors;
-    $slova ='abcčćdžđefghijklmnoprsštuvzž';
-    for($i=0;$i<count($ime);$++) {
-        if(strpos($slova, $ime[$i]) == false) {
+    $slova='qwertyuiopasdfghjklzxcvbnmšđčćž';
+    $temp = strtolower($ime,'UTF-8');
+    for($i=0;$i<strlen($temp);$i++) {
+        if(strpos($slova,$temp[$i]) == false) {
             $errors[] = 'Ime ne smije sadržati brojeve';
             return 0;
         }
     }
-    // if(!ctype_alpha($ime)) {
-    //     $errors[] = 'Ime ne smije sadržati brojeve';
-    //     // header("Location: index.php");
-    //     // exit();
-    //     }
 }
 function checkPrezime ($prezime) {
     global $errors;
-    if(!ctype_alpha($prezime)) {
-        $errors[] = 'Prezime ne smije sadržati brojeve';
-        // exit();
-    } else {
-        return 1;
-    };
+    $slova ='qwertyuiopasdfghjklzxcvbnmšđčćž';
+    $temp = strtolower($prezime,'UTF-8');
+    for($i=0;$i<strlen($temp);$i++) {
+        if(strpos($slova,$temp[$i]) == false) {
+            $errors[] = 'Prezime ne smije sadržati brojeve';
+            return 0;
+        }
+    }
 }
 
 function checkDobri ($dobri) {
     global $errors;
     if($dobri != 'Da') {
         $errors[] = 'Niste bili dobri';
-        // header("Location: index.php");
-        // exit();
     } else {
         return 1;
     };
