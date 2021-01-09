@@ -12,23 +12,21 @@ $zelje=$_POST["zelje"];
 
 function checkIme ($ime) {
     global $errors;
-    $slova='qwertyuiopasdfghjklzxcvbnmšđčćž';
-    $temp = strtolower($ime,'UTF-8');
-    for($i=0;$i<strlen($temp);$i++) {
-        if(strpos($slova,$temp[$i]) == false) {
+    $slova='qwertyuiopasdfghjklzxcvbnmšđčćžQWERTZUIOPASDFGHJKLYXCVBNMŠĐČĆŽ';
+    for($i=0;$i<strlen($ime);$i++) {
+        if(strpos($slova,$ime[$i]) == false) {
             $errors[] = 'Ime ne smije sadržati brojeve';
-            return 0;
+            break;
         }
     }
 }
 function checkPrezime ($prezime) {
     global $errors;
-    $slova ='qwertyuiopasdfghjklzxcvbnmšđčćž';
-    $temp = strtolower($prezime,'UTF-8');
-    for($i=0;$i<strlen($temp);$i++) {
-        if(strpos($slova,$temp[$i]) == false) {
+    $slova ='qwertyuiopasdfghjklzxcvbnmšđčćžQWERTZUIOPASDFGHJKLYXCVBNMŠĐČĆŽ';
+    for($i=0;$i<strlen($prezime);$i++) {
+        if(strpos($slova,$prezime[$i]) == false) {
             $errors[] = 'Prezime ne smije sadržati brojeve';
-            return 0;
+            break;
         }
     }
 }
@@ -73,11 +71,11 @@ echo '<!DOCTYPE html>
 <form action="sacuvaj_zelju.php" method="POST">
   <div class="form-group">
     <label for="ime">Ime</label>
-    <input type="text" class="form-control" id="ime" name="ime" placeholder="Marko" value="'.htmlspecialchars($ime).'">
+    <input type="text" class="form-control" required id="ime" name="ime" placeholder="Marko" value="'.htmlspecialchars($ime).'">
   </div>
   <div class="form-group">
     <label for="prezime">Prezime</label>
-    <input type="text" class="form-control" id="prezime" name="prezime" placeholder="Markovic" value="'.htmlspecialchars($prezime).'">
+    <input type="text" class="form-control" required id="prezime" name="prezime" placeholder="Markovic" value="'.htmlspecialchars($prezime).'">
   </div>
   <div class="form-group">
     <label for="gradovi">Izaberite grad</label>
