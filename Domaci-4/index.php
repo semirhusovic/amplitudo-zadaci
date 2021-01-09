@@ -1,5 +1,5 @@
 <?php
-$gradovi = ['Andrijevica','Bar','Berane','Bijelo Polje','Budva', 'Cetinje','Danilovgrad','Herceg Novi','Kolasin','Kotor','Mojkoviac','Niksic','Plav','Pljevlja','Pluzine','Podgorica','Rozaje','Savnik','Tivat','Ulcinj','Zabljak'];
+$gradovi = ['Andrijevica','Bar','Berane','BijeloPolje','Budva', 'Cetinje','Danilovgrad','HercegNovi','Kolasin','Kotor','Mojkoviac','Niksic','Plav','Pljevlja','Pluzine','Podgorica','Rozaje','Savnik','Tivat','Ulcinj','Zabljak'];
 ?>
 
 <!DOCTYPE html>

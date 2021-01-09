@@ -13,31 +13,41 @@ $zelje=$_POST["zelje"];
 function checkIme ($ime) {
     global $errors;
     $slova='qwertyuiopasdfghjklzxcvbnmšđčćžQWERTZUIOPASDFGHJKLYXCVBNMŠĐČĆŽ';
+    if($ime == '') {
+        $errors[] = 'Ime ne smije biti prazno!';
+    } else {
     for($i=0;$i<strlen($ime);$i++) {
         if(strpos($slova,$ime[$i]) == false) {
-            $errors[] = 'Ime ne smije sadržati brojeve';
+            $errors[] = 'Ime ne smije sadržati brojeve ni specijalne karaktere!';
             break;
         }
     }
+}
 }
 function checkPrezime ($prezime) {
     global $errors;
     $slova ='qwertyuiopasdfghjklzxcvbnmšđčćžQWERTZUIOPASDFGHJKLYXCVBNMŠĐČĆŽ';
+    if($prezime == '') {
+        $errors[] = 'Prezime ne smije biti prazno!';
+    } else {
     for($i=0;$i<strlen($prezime);$i++) {
         if(strpos($slova,$prezime[$i]) == false) {
-            $errors[] = 'Prezime ne smije sadržati brojeve';
+            $errors[] = 'Prezime ne smije sadržati brojeve ni specijalne karaktere!';
             break;
         }
     }
 }
-
+}
 function checkDobri ($dobri) {
     global $errors;
     if($dobri != 'Da') {
-        $errors[] = 'Niste bili dobri';
+        $errors[] = 'Niste bili dobri!';
     } else {
         return 1;
     };
+}
+if($zelje == '' ) {
+    $errors[] = 'Morate da unesete želju :P';
 }
 checkIme($ime); 
 checkPrezime($prezime);
